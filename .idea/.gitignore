@@ -9,11 +9,7 @@ out/
 
 # Maven
 target/
-pom.xml.tag
-pom.xml.versions
-pom.xml.bak
-release.properties
-dependency-reduced-pom.xml
+
 
 # Biner Java
 *.class
