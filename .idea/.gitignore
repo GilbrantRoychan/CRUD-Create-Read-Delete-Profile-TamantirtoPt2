@@ -1,0 +1,33 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.versions
+pom.xml.bak
+release.properties
+dependency-reduced-pom.xml
+
+# Biner Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Log
+*.log
+hs_err_pid*.log
+
+# File OS
+.DS_Store
+Thumbs.db
+
+# Konfigurasi sensitif (ubah sesuai kebutuhan)
+# src/main/resources/application.properties
