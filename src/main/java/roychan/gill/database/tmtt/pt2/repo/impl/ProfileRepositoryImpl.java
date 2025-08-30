@@ -70,6 +70,32 @@ public class ProfileRepositoryImpl implements ProfileRepository {
     }
 
     @Override
+    public ProfileEntity searchByID(Integer ID) {
+        try(Connection connection = HikariConnection.getDataSource().getConnection()) {
+            final  String QUERY_SQL = "SELECT * FROM Profile WHERE ID=?";
+            try(PreparedStatement statement = connection.prepareStatement(QUERY_SQL)) {
+                statement.setInt(1, ID);
+
+                ResultSet result = statement.executeQuery();
+                if (result.next()){
+                    return  new ProfileEntity(
+                            result.getInt("ID"),
+                            result.getString("Nama"),
+                            result.getDate("Tanggal_lahir").getTime(),
+                            result.getString("Nomor_telepon")
+                    );
+                }else {
+                    throw   new RuntimeException("ID tidak di temukan");
+                }
+
+            }
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
     public Integer update(Integer ID,ProfileEntity profile) {
 
         // melakukan check terlebih dahulu apakah ID ada di database

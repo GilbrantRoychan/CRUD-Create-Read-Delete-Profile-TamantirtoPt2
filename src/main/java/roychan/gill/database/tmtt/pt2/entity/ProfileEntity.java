@@ -18,9 +18,6 @@ public class ProfileEntity {
         this.nama = nama;
         this.tanggal_lahir = tanggal_lahir;
         this.nomor_telepon = nomor_telepon;
-
-//        TODO: menambahkan entity baru untuk Updated_at untuk setiap perubahan, dan ubah TimeStamp ke boleh NULL
-
     }
 
     public ProfileEntity(Integer ID, String nama, Long tanggal_lahir, String nomor_telepon) {

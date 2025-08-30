@@ -40,4 +40,9 @@ public class TestService {
     void testDeleteData() {
         profileService.deleteData(4);
     }
+
+    @Test
+    void testSearchByID() {
+        profileService.searchById(1);
+    }
 }

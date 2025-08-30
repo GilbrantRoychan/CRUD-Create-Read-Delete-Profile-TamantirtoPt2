@@ -1,5 +1,6 @@
 package roychan.gill.database.tmtt.pt2;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import roychan.gill.database.tmtt.pt2.entity.ProfileEntity;
@@ -45,7 +46,12 @@ public class TestRepository {
 
     @Test
     void testDeleteData() {
-
         System.out.println(profileRepository.deleteById(1));
+    }
+
+    @Test
+    void testSearchDataByID() {
+        ProfileEntity profile = profileRepository.searchByID(1);
+        Assertions.assertEquals(profile.getID(), 1);
     }
 }

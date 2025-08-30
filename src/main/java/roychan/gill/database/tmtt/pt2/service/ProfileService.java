@@ -33,8 +33,7 @@ public class ProfileService {
     public void insertData(String nama, Integer tanggal, Integer bulan, Integer tahun, String noTlp){
             ProfileEntity profile = new ProfileEntity(nama, ConvertDateToLong.convertToLong(tanggal,bulan,tahun),noTlp);
             profileRepository.insert(profile);
-        }
-
+        };
     public  void updateData(Integer IDTarget, String nama, Integer tanggal, Integer bulan, Integer tahun, String noTlp ){
 
         ProfileEntity profileUpdated = new ProfileEntity(nama,ConvertDateToLong.convertToLong(tanggal,bulan,tahun), noTlp);
@@ -46,9 +45,7 @@ public class ProfileService {
             throw new RuntimeException();
         }
 
-        }
-
-
+        };
     public  void  deleteData(Integer ID){
 
         Boolean efected = profileRepository.deleteById(ID);
@@ -58,7 +55,22 @@ public class ProfileService {
             System.err.println("terjadi kesalah dengan ID " + ID);
         }
 
-    }
+    };
+    public  void searchById(Integer ID){
+
+        ProfileEntity profile = profileRepository.searchByID(ID);
+        if (profile!=null){
+            System.out.println("ID Di temukan dengan data");
+            System.out.println();
+            System.out.println("ID: " + profile.getID());
+            System.out.println("Nama: " + profile.getNama());
+            System.out.println("Tanggal lahir: " + new Date(profile.getTanggal_lahir()));
+            System.out.println("Nomor telepon: " + profile.getNomor_telepon());
+        }else {
+            throw new RuntimeException("ID tidak cocok");
+        }
+
+    };
 
 
 

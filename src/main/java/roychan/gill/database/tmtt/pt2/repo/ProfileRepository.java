@@ -10,6 +10,7 @@ public interface ProfileRepository {
     List<ProfileEntity> getAll();
     Integer update(Integer ID,ProfileEntity profile);
     Boolean deleteById(Integer ID);
+    ProfileEntity searchByID(Integer ID);
 
     // TODO: fiitur tambahan like searchByID dll
 
