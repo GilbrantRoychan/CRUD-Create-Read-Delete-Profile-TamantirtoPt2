@@ -6,6 +6,10 @@ import roychan.gill.database.tmtt.pt2.entity.ProfileEntity;
 import roychan.gill.database.tmtt.pt2.repo.ProfileRepository;
 import roychan.gill.database.tmtt.pt2.repo.impl.ProfileRepositoryImpl;
 import roychan.gill.database.tmtt.pt2.utill.ConvertDateToLong;
+import roychan.gill.database.tmtt.pt2.utill.HikariConnection;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class TestRepository {
 
@@ -19,8 +23,12 @@ public class TestRepository {
 
     @Test
     void testInsertData() {
-        ProfileEntity testProfile1 = new ProfileEntity("GilbrantTest", ConvertDateToLong.convertToLong(19,7,2002), "1212121212");
+        ProfileEntity testProfile1 = new ProfileEntity("GilbrantTest1", ConvertDateToLong.convertToLong(19,7,2002), "1");
+        ProfileEntity testProfile2 = new ProfileEntity("GilbrantTes2", ConvertDateToLong.convertToLong(19,7,2002), "12");
+        ProfileEntity testProfile3 = new ProfileEntity("GilbrantTest3", ConvertDateToLong.convertToLong(19,7,2002), "123");
         profileRepository.insert(testProfile1);
+        profileRepository.insert(testProfile2);
+        profileRepository.insert(testProfile3);
     }
 
     @Test

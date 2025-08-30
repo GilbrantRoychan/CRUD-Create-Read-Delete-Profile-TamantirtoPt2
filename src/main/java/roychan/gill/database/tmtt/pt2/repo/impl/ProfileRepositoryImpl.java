@@ -84,7 +84,7 @@ public class ProfileRepositoryImpl implements ProfileRepository {
 
                     final String QUERY_SQL = """
                             UPDATE  Profile
-                            SET Nama = ?, Tanggal_lahir=?, Nomor_telepon=?
+                            SET Nama = ?, Tanggal_lahir=?, Nomor_telepon=?, Updated_at=?
                             WHERE ID=?
                             """;
                     try(PreparedStatement statement1 = connection.prepareStatement(QUERY_SQL)) {
@@ -92,7 +92,8 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                         statement1.setString(1, profile.getNama());
                         statement1.setDate(2, new Date(profile.getTanggal_lahir()));
                         statement1.setString(3, profile.getNomor_telepon());
-                        statement1.setInt(4, ID);
+                        statement1.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+                        statement1.setInt(5, ID);
                         return  statement1.executeUpdate();
 
                     }
