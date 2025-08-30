@@ -12,7 +12,7 @@ public interface ProfileRepository {
     Boolean deleteById(Integer ID);
     ProfileEntity searchByID(Integer ID);
 
-    // TODO: fiitur tambahan like searchByID dll
+
 
 
 

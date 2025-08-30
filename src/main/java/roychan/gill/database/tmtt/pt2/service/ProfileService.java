@@ -30,13 +30,13 @@ public class ProfileService {
         }
 
     }
-    public void insertData(String nama, Integer tanggal, Integer bulan, Integer tahun, String noTlp){
-            ProfileEntity profile = new ProfileEntity(nama, ConvertDateToLong.convertToLong(tanggal,bulan,tahun),noTlp);
+    public void insertData(String nama, String date, String noTlp){
+            ProfileEntity profile = new ProfileEntity(nama, ConvertDateToLong.convertToLong(date), noTlp);
             profileRepository.insert(profile);
         };
-    public  void updateData(Integer IDTarget, String nama, Integer tanggal, Integer bulan, Integer tahun, String noTlp ){
+    public  void updateData(Integer IDTarget, String nama, String date, String noTlp ){
 
-        ProfileEntity profileUpdated = new ProfileEntity(nama,ConvertDateToLong.convertToLong(tanggal,bulan,tahun), noTlp);
+        ProfileEntity profileUpdated = new ProfileEntity(nama,ConvertDateToLong.convertToLong(date), noTlp);
         Integer updated = profileRepository.update(IDTarget, profileUpdated);
 
         if (updated>0){
