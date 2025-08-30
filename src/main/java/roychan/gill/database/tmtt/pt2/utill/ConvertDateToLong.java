@@ -17,5 +17,9 @@ public class ConvertDateToLong {
 
         return  resiult.getTime() ; // return Long value;
 
+        //TODO: perbaiki untuk bs melakukan input menjadi 1 hint: gunakan Split
+        //TODO: Ada bug saat memasukan tahun akan tahun +1
+
+
     }
 }

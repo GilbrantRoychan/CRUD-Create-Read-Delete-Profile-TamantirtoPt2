@@ -25,5 +25,3 @@ hs_err_pid*.log
 .DS_Store
 Thumbs.db
 
-# Konfigurasi sensitif (ubah sesuai kebutuhan)
-# src/main/resources/application.properties
