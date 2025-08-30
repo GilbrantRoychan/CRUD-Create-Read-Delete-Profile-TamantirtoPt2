@@ -19,15 +19,15 @@ public class ProfileService {
 
     public  void showData(){
         // karena di repo sudah ada iterasi kita bs langsung di pangil
-        System.out.println("Menampilka data: ");
         List<ProfileEntity> profileEntities = profileRepository.getAll();
-        for (var x: profileEntities){
-            System.out.println("ID: " + x.getID());
-            System.out.println("Nama: " + x.getNama());
-            System.out.println("Tanggal lahir: " + new Date(x.getTanggal_lahir()));
-            System.out.println("Nomor telepon: " + x.getNomor_telepon());
-            System.out.println();
-        }
+                profileEntities.forEach(datas->{
+                    System.out.println("ID: " + datas.getID());
+                    System.out.println("Nama: " + datas.getNama());
+                    System.out.println("Tanggal lahir: " + new Date(datas.getTanggal_lahir()));
+                    System.out.println("Nomor telepon: " + datas.getNomor_telepon());
+                    System.out.println();
+                });
+
 
     }
     public void insertData(String nama, String date, String noTlp){

@@ -17,7 +17,7 @@ public class TestConvertToLong {
     @Test
     void testconvert2() {
 
-        Long data = ConvertDateToLong.convertToLong("19/7/2002");
+        Long data = ConvertDateToLong.convertToLong("19/7,2002");
         Date cek = new Date(data);
         System.out.println(cek);
 

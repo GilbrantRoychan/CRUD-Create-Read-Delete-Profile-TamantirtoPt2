@@ -25,5 +25,5 @@ public class ConvertDateToLong {
         return  resiult.getTime() ; // return Long value;
 
     };
-    
+
 }
