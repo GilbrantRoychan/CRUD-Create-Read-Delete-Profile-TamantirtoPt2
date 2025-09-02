@@ -52,12 +52,16 @@ public class TestRepository {
 
 
     @Test
+    @Tag("absensi")
     void testCheckIn() {
-        Assertions.assertTrue(profileRepository.checkIn(1));
+        Assertions.assertTrue(profileRepository.checkIn(2));   ;
     }
 
     @Test
+    @Tag("absensi")
     void testCheckOut() {
-        Assertions.assertTrue(profileRepository.checkOut(1));
+        Assertions.assertTrue(profileRepository.checkOut(2));
+
+
     }
 }
