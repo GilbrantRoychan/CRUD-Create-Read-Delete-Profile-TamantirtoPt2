@@ -89,4 +89,23 @@ public class ViewProfile {
             }
       }
 
+      public  static  void viewabsensiCheckIn(){
+            try(Scanner scanner = new Scanner(System.in)) {
+
+                  System.out.print("Masukan ID: ");
+                  Integer getIDFromUser = scanner.nextInt();
+
+                  profileService.checkIn(getIDFromUser);
+            }
+      }
+
+      public  static  void viewabsensiCheckout(){
+            try(Scanner scanner = new Scanner(System.in)) {
+
+                  System.out.print("Masukan ID: ");
+                  Integer getIDFromUser = scanner.nextInt();
+                  profileService.checkOut(getIDFromUser);
+            }
+      }
+
 }

@@ -36,7 +36,7 @@ public class ProfileService {
                 profileRepository.insert(profile);
             }
 
-        };
+        }
     public  void updateData(Integer IDTarget, String nama, String date, String noTlp ){
 
         ProfileEntity profileUpdated = new ProfileEntity(nama,ConvertDateToLong.convertToLong(date), noTlp);
@@ -48,7 +48,7 @@ public class ProfileService {
             throw new RuntimeException();
         }
 
-        };
+        }
     public  void  deleteData(Integer ID){
 
         Boolean efected = profileRepository.deleteById(ID);
@@ -58,7 +58,7 @@ public class ProfileService {
             System.err.println("terjadi kesalah dengan ID " + ID);
         }
 
-    };
+    }
     public  void searchById(Integer ID){
 
         ProfileEntity profile = profileRepository.searchByID(ID);
@@ -70,17 +70,17 @@ public class ProfileService {
             System.out.println("Tanggal lahir: " + new Date(profile.getTanggal_lahir()));
             System.out.println("Nomor telepon: " + profile.getNomor_telepon());
         }else {
-            throw new RuntimeException("ID tidak cocok");
+            System.out.println("ID tidak cocok");
         }
 
-    };
+    }
     public  void checkIn(Integer ID){
 
         Boolean get = profileRepository.checkIn(ID);
         if (get){
             System.out.println("berhasil melakukan Check in dengan ID: " +ID );
         }else {
-            throw  new RuntimeException("ID tidak terdaftar di database");
+            System.out.println("ID tidak terdaftar di database");
         }
 
     }
@@ -90,13 +90,9 @@ public class ProfileService {
         if (get){
             System.out.println("berhasil melakukan Check out dengan ID: " + ID );
         }else {
-            throw  new RuntimeException("Anda belum melakukan Check In dengan ID" + ID);
+            System.out.println("Anda belum melakukan Check In dengan ID: " + ID);
         }
 
     }
 
 }
-
-
-
-

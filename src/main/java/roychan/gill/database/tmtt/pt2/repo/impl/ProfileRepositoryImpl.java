@@ -85,7 +85,7 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                             result.getString("Nomor_telepon")
                     );
                 }else {
-                    throw   new RuntimeException("ID tidak di temukan");
+                   return  null;
                 }
 
             }
