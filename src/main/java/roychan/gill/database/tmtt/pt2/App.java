@@ -10,9 +10,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main( String[] args ) {
-
-        try(Scanner scanner = new Scanner(System.in)) {
-
+        Scanner scanner = new Scanner(System.in);
                 System.out.println("Selamat data di MyProfile silahkan masukan pilihan Anda");
                 System.out.println("1. Show Data");
                 System.out.println("2. Create dta");
@@ -21,17 +19,14 @@ public class App {
 
                 System.out.print("masukan pilihan anda: ");
                 Integer input = scanner.nextInt();
-
-                switch (input){
-                    case 1->ViewProfile.viewShowProfile();
-                    case 2->    ViewProfile.viewAddData();
-                    case 3->ViewProfile.viewUpdateData();
-                    case 4->ViewProfile.viewSearchByID();
-                    default->System.err.println("Input salah");
-
-
-
+                scanner.nextLine();
+                switch (input) {
+                    case 1 -> ViewProfile.viewShowProfile();
+                    case 2 -> ViewProfile.viewAddData();
+                    case 3 -> ViewProfile.viewUpdateData();
+                    case 4 -> ViewProfile.viewSearchByID();
+                    default -> System.err.println("Input salah");
             }
-            }
+        }
     }
-}
+

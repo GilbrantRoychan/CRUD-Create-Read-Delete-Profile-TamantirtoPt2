@@ -2,16 +2,12 @@ package roychan.gill.database.tmtt.pt2;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import roychan.gill.database.tmtt.pt2.entity.ProfileEntity;
 import roychan.gill.database.tmtt.pt2.repo.ProfileRepository;
 import roychan.gill.database.tmtt.pt2.repo.impl.ProfileRepositoryImpl;
 import roychan.gill.database.tmtt.pt2.utill.ConvertDateToLong;
-import roychan.gill.database.tmtt.pt2.utill.HikariConnection;
-
-import java.sql.Connection;
-import java.sql.SQLException;
-
 public class TestRepository {
 
     ProfileRepository profileRepository;
@@ -52,5 +48,16 @@ public class TestRepository {
     void testSearchDataByID() {
         ProfileEntity profile = profileRepository.searchByID(1);
         Assertions.assertEquals(profile.getID(), 1);
+    }
+
+
+    @Test
+    void testCheckIn() {
+        Assertions.assertTrue(profileRepository.checkIn(1));
+    }
+
+    @Test
+    void testCheckOut() {
+        Assertions.assertTrue(profileRepository.checkOut(1));
     }
 }

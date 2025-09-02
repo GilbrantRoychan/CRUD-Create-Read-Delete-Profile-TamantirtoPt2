@@ -96,6 +96,75 @@ public class ProfileRepositoryImpl implements ProfileRepository {
     }
 
     @Override
+    public Boolean checkIn(Integer ID) {
+        // melakukan  Select Data dengan ID target
+        try(Connection connection = HikariConnection.getDataSource().getConnection()) {
+            final  String QUERY_GET_SQL = "SELECT * FROM Profile WHERE ID=?";
+            try(PreparedStatement statement = connection.prepareStatement(QUERY_GET_SQL)) {
+                statement.setInt(1, ID);
+
+                int rowEffected;
+                try(ResultSet result = statement.executeQuery()) {
+                    // melakukan kondisi apakah data ID yang ada di DB true atau ID sama dengan ID di parameter
+                    if (result.next() || ID.equals(result.getInt("ID"))){
+                        // jika true maka lakukan insertData di table absensi
+                        final String QUERY_INSERT_SQL= "INSERT INTO absensi(ID_Profile, masuk) VALUES(?,?)";
+                        try(PreparedStatement statement1 = connection.prepareStatement(QUERY_INSERT_SQL)) {
+                            statement1.setInt(1, result.getInt("ID"));
+                            statement1.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+
+                            rowEffected = statement1.executeUpdate();
+                        }
+                        return rowEffected > 0;
+                    }
+                        return false;
+                }
+
+            }
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public Boolean checkOut(Integer ID) {
+        try(Connection connection = HikariConnection.getDataSource().getConnection()) {
+            final String QUERY_GET_SQL = "SELECT * FROM Profile WHERE ID =?";
+            try(PreparedStatement statement= connection.prepareStatement(QUERY_GET_SQL)) {
+                statement.setInt(1, ID);
+
+                try(ResultSet result = statement.executeQuery()) {
+                    if (result.next() || ID.equals(result.getInt("ID"))){
+
+                        final  String  QUERY_UPDATE_SQL = """
+                                UPDATE absensi
+                                SET keluar = ?
+                                WHERE ID_Profile=?
+                                """;
+                        try(PreparedStatement statement1 = connection.prepareStatement(QUERY_UPDATE_SQL)) {
+                            statement1.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+                            statement1.setInt(2, result.getInt("ID"));
+
+                            statement1.executeUpdate();
+                            return true;
+
+//                            TODO: terdapat BUG saat melakukan Update kolom masuk juga ikut terdampak dan ketika memasukan salah input tetap di anggap true
+
+                        }
+                    }
+
+                }
+
+            }
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+       return false;
+    }
+
+    @Override
     public Integer update(Integer ID,ProfileEntity profile) {
 
         // melakukan check terlebih dahulu apakah ID ada di database
@@ -121,9 +190,6 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                         statement1.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
                         statement1.setInt(5, ID);
                         return  statement1.executeUpdate();
-
-                        //TODO: terdapat bug ketika melakukan update  Created_at juga melakukan update tanggal
-
                     }
 
                 }else {

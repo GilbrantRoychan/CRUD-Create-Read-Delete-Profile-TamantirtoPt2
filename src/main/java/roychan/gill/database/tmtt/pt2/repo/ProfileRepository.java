@@ -11,6 +11,8 @@ public interface ProfileRepository {
     Integer update(Integer ID,ProfileEntity profile);
     Boolean deleteById(Integer ID);
     ProfileEntity searchByID(Integer ID);
+    Boolean checkIn(Integer ID);
+    Boolean checkOut(Integer ID);
 
 
 

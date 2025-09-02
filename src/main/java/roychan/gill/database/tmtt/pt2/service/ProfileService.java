@@ -32,7 +32,10 @@ public class ProfileService {
     }
     public void insertData(String nama, String date, String noTlp){
             ProfileEntity profile = new ProfileEntity(nama, ConvertDateToLong.convertToLong(date), noTlp);
-            profileRepository.insert(profile);
+            if (profile!=null){
+                profileRepository.insert(profile);
+            }
+
         };
     public  void updateData(Integer IDTarget, String nama, String date, String noTlp ){
 
