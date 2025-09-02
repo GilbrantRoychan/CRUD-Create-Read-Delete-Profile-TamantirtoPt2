@@ -74,9 +74,26 @@ public class ProfileService {
         }
 
     };
+    public  void checkIn(Integer ID){
 
+        Boolean get = profileRepository.checkIn(ID);
+        if (get){
+            System.out.println("berhasil melakukan Check in dengan ID: " +ID );
+        }else {
+            throw  new RuntimeException("ID tidak terdaftar di database");
+        }
 
+    }
+    public  void checkOut(Integer ID){
 
+        Boolean get = profileRepository.checkOut(ID);
+        if (get){
+            System.out.println("berhasil melakukan Check out dengan ID: " + ID );
+        }else {
+            throw  new RuntimeException("Anda belum melakukan Check In dengan ID" + ID);
+        }
+
+    }
 
 }
 

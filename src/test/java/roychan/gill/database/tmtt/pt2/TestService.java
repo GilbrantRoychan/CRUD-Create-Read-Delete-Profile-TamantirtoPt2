@@ -45,4 +45,19 @@ public class TestService {
     void testSearchByID() {
         profileService.searchById(1);
     }
+
+    @Test
+    void testCheckIn() {
+//        profileService.checkIn(1);
+//        profileService.checkIn(2);
+        profileService.checkIn(12);
+    }
+    @Test
+    void testCheckOut() {
+//        profileService.checkOut(1);
+//        profileService.checkOut(2);
+        profileService.checkOut(3);
+    }
+
+
 }

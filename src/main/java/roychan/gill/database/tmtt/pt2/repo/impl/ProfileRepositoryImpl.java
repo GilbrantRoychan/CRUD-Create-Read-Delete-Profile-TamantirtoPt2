@@ -152,7 +152,6 @@ public class ProfileRepositoryImpl implements ProfileRepository {
 
                     }
                 }
-
             }
 
         }catch (SQLException e){
