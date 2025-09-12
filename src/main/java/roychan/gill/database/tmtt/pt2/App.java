@@ -1,8 +1,5 @@
 package roychan.gill.database.tmtt.pt2;
 
-import roychan.gill.database.tmtt.pt2.repo.ProfileRepository;
-import roychan.gill.database.tmtt.pt2.repo.impl.ProfileRepositoryImpl;
-import roychan.gill.database.tmtt.pt2.service.ProfileService;
 import roychan.gill.database.tmtt.pt2.view.ViewProfile;
 
 import java.util.Scanner;
@@ -18,9 +15,11 @@ public class App {
                 System.out.println("2. Create dta");
                 System.out.println("3. Update data");
                 System.out.println("4. hapus data");
-                System.out.println("5. Cari data");
+                System.out.println("5. Cari data by ID");
                 System.out.println("6. Check In");
                 System.out.println("7. Check Out");
+                System.out.println("8. Cari data by nama");
+
 
 
                 System.out.print("masukan pilihan anda: ");
@@ -34,6 +33,7 @@ public class App {
                     case 5 -> ViewProfile.viewSearchByID();
                     case 6 -> ViewProfile.viewabsensiCheckIn();
                     case 7 -> ViewProfile.viewabsensiCheckout();
+                    case 8 -> ViewProfile.viewSearchByNama();
                     default -> System.err.println("Input salah");
             }
         }

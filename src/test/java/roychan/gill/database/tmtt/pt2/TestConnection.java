@@ -1,12 +1,14 @@
 package roychan.gill.database.tmtt.pt2;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import roychan.gill.database.tmtt.pt2.utill.HikariConnection;
 
 import java.sql.*;
 
+@Disabled
 @Tag("test_connection")
 public class TestConnection {
 

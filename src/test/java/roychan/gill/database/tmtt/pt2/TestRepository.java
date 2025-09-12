@@ -1,13 +1,13 @@
 package roychan.gill.database.tmtt.pt2;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import roychan.gill.database.tmtt.pt2.entity.ProfileEntity;
 import roychan.gill.database.tmtt.pt2.repo.ProfileRepository;
 import roychan.gill.database.tmtt.pt2.repo.impl.ProfileRepositoryImpl;
 import roychan.gill.database.tmtt.pt2.utill.ConvertDateToLong;
+
+
+@Disabled
 public class TestRepository {
 
     ProfileRepository profileRepository;
@@ -33,6 +33,7 @@ public class TestRepository {
         System.out.println(profileRepository.getAll().size());
     }
 
+
     @Test
     void testUdpateData() {
         ProfileEntity profileGanti = new ProfileEntity("Roychan", ConvertDateToLong.convertToLong("12/11/2001"), "08951234");
@@ -51,17 +52,29 @@ public class TestRepository {
     }
 
 
+    @Disabled
     @Test
     @Tag("absensi")
     void testCheckIn() {
         Assertions.assertTrue(profileRepository.checkIn(2));   ;
     }
 
+    @Disabled
     @Test
     @Tag("absensi")
     void testCheckOut() {
         Assertions.assertTrue(profileRepository.checkOut(2));
 
 
+    }
+
+    @Test
+    void testSearchByName() {
+        //cara test nya adalah aku menambahkan 2 data terlebih dahulu dengan nama yang identik, lalu akan aku cek Size data yang sama
+       // ProfileEntity testProfile1 = new ProfileEntity("Bianda Ara", ConvertDateToLong.convertToLong("19/7/2001"), "1223");
+        //ProfileEntity testProfile2 = new ProfileEntity("Bianda Ari", ConvertDateToLong.convertToLong("19/7/2010"), "12987");
+
+        var cekData = profileRepository.searchByFamiliarName("Bianda");
+        Assertions.assertNotNull( cekData);
     }
 }

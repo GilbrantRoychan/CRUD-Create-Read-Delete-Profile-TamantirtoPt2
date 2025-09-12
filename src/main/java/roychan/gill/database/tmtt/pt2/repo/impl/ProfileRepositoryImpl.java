@@ -159,6 +159,41 @@ public class ProfileRepositoryImpl implements ProfileRepository {
         }
     }
 
+    @Override
+    public List<ProfileEntity> searchByFamiliarName(String name) {
+        try(Connection connection = HikariConnection.getDataSource().getConnection()) {
+
+            final String QUERY_SQL = """
+                    SELECT * FROM Profile WHERE Nama LIKE ? 
+                    """;
+            try(PreparedStatement statement = connection.prepareStatement(QUERY_SQL)) {
+
+                statement.setString(1, "%" + name + "%");
+
+                try(ResultSet resultSet = statement.executeQuery()) {
+                    List<ProfileEntity> profileEntities = new ArrayList<>();
+                    while (resultSet.next()){
+                        profileEntities.add(
+                                new ProfileEntity(
+                                        resultSet.getInt("ID"),
+                                        resultSet.getString("Nama"),
+                                        resultSet.getDate("Tanggal_lahir").getTime(),
+                                        resultSet.getString("Nomor_telepon")
+
+                                ));
+                    }
+                    return  profileEntities;
+
+                }
+
+
+            }
+
+        }catch (SQLException e){
+            throw  new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public Integer update(Integer ID,ProfileEntity profile) {

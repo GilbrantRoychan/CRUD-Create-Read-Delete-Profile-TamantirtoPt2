@@ -13,6 +13,7 @@ public interface ProfileRepository {
     ProfileEntity searchByID(Integer ID);
     Boolean checkIn(Integer ID);
     Boolean checkOut(Integer ID);
+    List<ProfileEntity> searchByFamiliarName(String name);
 
 
 

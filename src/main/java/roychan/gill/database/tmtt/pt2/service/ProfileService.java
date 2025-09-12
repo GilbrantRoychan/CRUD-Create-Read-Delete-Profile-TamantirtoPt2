@@ -8,7 +8,6 @@ import roychan.gill.database.tmtt.pt2.utill.ConvertDateToLong;
 import java.sql.Date;
 import java.util.List;
 
-
 public class ProfileService {
 
     private static   ProfileRepository profileRepository;
@@ -91,6 +90,29 @@ public class ProfileService {
             System.out.println("berhasil melakukan Check out dengan ID: " + ID );
         }else {
             System.out.println("Anda belum melakukan Check In dengan ID: " + ID);
+        }
+
+    }
+
+    public  void showDataFamiliar(String nama){
+
+        // karena di repo sudah ada iterasi kita bs langsung di pangil
+        List<ProfileEntity> profileEntities = profileRepository.searchByFamiliarName(nama);
+        if (!profileEntities.isEmpty()){
+
+            System.out.println("Ditemukan " + profileEntities.size() + " data") ;
+            System.out.println();
+
+
+            profileEntities.forEach(datas->{
+                System.out.println("ID: " + datas.getID());
+                System.out.println("Nama: " + datas.getNama());
+                System.out.println("Tanggal lahir: " + new Date(datas.getTanggal_lahir()));
+                System.out.println("Nomor telepon: " + datas.getNomor_telepon());
+                System.out.println();
+            });
+        }else {
+            System.err.println("data tidak di temukan ");
         }
 
     }

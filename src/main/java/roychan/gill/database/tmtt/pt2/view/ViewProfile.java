@@ -1,5 +1,4 @@
 package roychan.gill.database.tmtt.pt2.view;
-import roychan.gill.database.tmtt.pt2.entity.ProfileEntity;
 import roychan.gill.database.tmtt.pt2.repo.ProfileRepository;
 import roychan.gill.database.tmtt.pt2.repo.impl.ProfileRepositoryImpl;
 import roychan.gill.database.tmtt.pt2.service.ProfileService;
@@ -105,6 +104,15 @@ public class ViewProfile {
                   System.out.print("Masukan ID: ");
                   Integer getIDFromUser = scanner.nextInt();
                   profileService.checkOut(getIDFromUser);
+            }
+      }
+
+      public static  void viewSearchByNama(){
+            try(Scanner scanner =  new Scanner(System.in)) {
+                  System.out.print("masukan nama  yang ingin di cari : ");
+                  String inputNama = scanner.nextLine();
+
+                  profileService.showDataFamiliar(inputNama);
             }
       }
 

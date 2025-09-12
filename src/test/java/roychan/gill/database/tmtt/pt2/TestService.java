@@ -2,10 +2,12 @@ package roychan.gill.database.tmtt.pt2;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import roychan.gill.database.tmtt.pt2.repo.ProfileRepository;
 import roychan.gill.database.tmtt.pt2.repo.impl.ProfileRepositoryImpl;
 import roychan.gill.database.tmtt.pt2.service.ProfileService;
+
 
 public class TestService {
 
@@ -59,5 +61,9 @@ public class TestService {
         profileService.checkOut(3);
     }
 
+    @Test
+    void testSearchByName() {
 
+        profileService.showDataFamiliar("Bianda");
+    }
 }
