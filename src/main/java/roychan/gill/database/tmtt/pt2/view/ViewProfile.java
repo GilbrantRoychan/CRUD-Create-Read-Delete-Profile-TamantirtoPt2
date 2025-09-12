@@ -16,10 +16,6 @@ public class ViewProfile {
       }
 
 
-      public ViewProfile(ProfileService profileService) {
-            this.profileService = profileService;
-      }
-
       public static   void viewShowProfile(){
             System.out.println("Menampilkan Data : ");
             profileService.showData();
