@@ -11,10 +11,13 @@ public class HikariConnection {
     private  static  final Integer MAXIMUM_POOL_SIZE = 10;
     private  static  final Long IDLE_TIMEOUT = 60_000L;
 
+    private  static  final String  MYSQL_USERNAME = System.getenv("username");
+    private static final String MYSQL_PASSWORD = System.getenv("password");
+
     static {
         HikariConfig config = new HikariConfig();
-        config.setUsername("test");
-        config.setPassword("test");
+        config.setUsername(MYSQL_USERNAME);
+        config.setPassword(MYSQL_PASSWORD);
         config.setJdbcUrl("jdbc:mysql://localhost:3306/tamantirto");
 
 
