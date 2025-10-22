@@ -5,6 +5,8 @@ import roychan.gill.database.tmtt.pt2.repo.ProfileRepository;
 import roychan.gill.database.tmtt.pt2.utill.HikariConnection;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +23,9 @@ public class ProfileRepositoryImpl implements ProfileRepository {
             try(PreparedStatement statement = connection.prepareStatement(QUERY_SQL, Statement.RETURN_GENERATED_KEYS)) {
 
                 statement.setString(1, profile.getNama());
-                statement.setDate(2,new Date(profile.getTanggal_lahir()));
+                statement.setObject(2,profile.getTanggal_lahir());
                 statement.setString(3, profile.getNomor_telepon());
-                statement.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+                statement.setObject(4, LocalDateTime.now());
 
                 // execute DB
                 statement.executeUpdate();
@@ -56,7 +58,7 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                             new ProfileEntity(
                                     result.getInt("ID"),
                                     result.getString("Nama"),
-                                    result.getDate("Tanggal_lahir").getTime(),
+                                    result.getObject("Tanggal_lahir", LocalDate.class),
                                     result.getString("Nomor_telepon")
                                     ));
                 }
@@ -81,7 +83,7 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                     return  new ProfileEntity(
                             result.getInt("ID"),
                             result.getString("Nama"),
-                            result.getDate("Tanggal_lahir").getTime(),
+                            result.getObject("Tanggal_lahir", LocalDate.class),
                             result.getString("Nomor_telepon")
                     );
                 }else {
@@ -177,7 +179,7 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                                 new ProfileEntity(
                                         resultSet.getInt("ID"),
                                         resultSet.getString("Nama"),
-                                        resultSet.getDate("Tanggal_lahir").getTime(),
+                                        resultSet.getObject("Tanggal_lahir", LocalDate.class),
                                         resultSet.getString("Nomor_telepon")
 
                                 ));
@@ -216,9 +218,9 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                     try(PreparedStatement statement1 = connection.prepareStatement(QUERY_SQL)) {
 
                         statement1.setString(1, profile.getNama());
-                        statement1.setDate(2, new Date(profile.getTanggal_lahir()));
+                        statement1.setObject(2, profile.getTanggal_lahir());
                         statement1.setString(3, profile.getNomor_telepon());
-                        statement1.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
+                        statement1.setObject(4, LocalDateTime.now());
                         statement1.setInt(5, ID);
                         return  statement1.executeUpdate();
                     }

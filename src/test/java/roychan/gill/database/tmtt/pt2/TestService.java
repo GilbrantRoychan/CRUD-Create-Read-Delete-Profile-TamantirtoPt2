@@ -28,14 +28,14 @@ public class TestService {
 
     @Test
     void testInsertData (){
-        profileService.insertData("Ara", "24/4/2002", "1920192019201");
+        profileService.insertData("Ara", "24/04/2002", "1920192019201");
         profileService.showData();
     }
 
     @Test
     void testUpdateData() {
 
-        profileService.updateData(2, "GIlbrant Roychan", "19/7/2002", "089504455462");
+        profileService.updateData(2, "GIlbrant Roychan", "19/07/2002", "089504455462");
     }
 
     @Test

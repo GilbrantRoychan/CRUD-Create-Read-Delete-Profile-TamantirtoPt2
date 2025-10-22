@@ -6,6 +6,8 @@ import roychan.gill.database.tmtt.pt2.utill.ConvertDateToLong;
 
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ProfileService {
@@ -22,7 +24,7 @@ public class ProfileService {
                 profileEntities.forEach(datas->{
                     System.out.println("ID: " + datas.getID());
                     System.out.println("Nama: " + datas.getNama());
-                    System.out.println("Tanggal lahir: " + new Date(datas.getTanggal_lahir()));
+                    System.out.println("Tanggal lahir: " + datas.getTanggal_lahir());
                     System.out.println("Nomor telepon: " + datas.getNomor_telepon());
                     System.out.println();
                 });
@@ -30,7 +32,7 @@ public class ProfileService {
 
     }
     public void insertData(String nama, String date, String noTlp){
-            ProfileEntity profile = new ProfileEntity(nama, ConvertDateToLong.convertToLong(date), noTlp);
+            ProfileEntity profile = new ProfileEntity(nama, LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy")), noTlp);
             if (profile!=null){
                 profileRepository.insert(profile);
             }
@@ -38,7 +40,7 @@ public class ProfileService {
         }
     public  void updateData(Integer IDTarget, String nama, String date, String noTlp ){
 
-        ProfileEntity profileUpdated = new ProfileEntity(nama,ConvertDateToLong.convertToLong(date), noTlp);
+        ProfileEntity profileUpdated = new ProfileEntity(nama,LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy")), noTlp);
         Integer updated = profileRepository.update(IDTarget, profileUpdated);
 
         if (updated>0){
@@ -66,7 +68,7 @@ public class ProfileService {
             System.out.println();
             System.out.println("ID: " + profile.getID());
             System.out.println("Nama: " + profile.getNama());
-            System.out.println("Tanggal lahir: " + new Date(profile.getTanggal_lahir()));
+            System.out.println("Tanggal lahir: " + profile.getTanggal_lahir());
             System.out.println("Nomor telepon: " + profile.getNomor_telepon());
         }else {
             System.out.println("ID tidak cocok");
@@ -107,7 +109,7 @@ public class ProfileService {
             profileEntities.forEach(datas->{
                 System.out.println("ID: " + datas.getID());
                 System.out.println("Nama: " + datas.getNama());
-                System.out.println("Tanggal lahir: " + new Date(datas.getTanggal_lahir()));
+                System.out.println("Tanggal lahir: " + datas.getTanggal_lahir());
                 System.out.println("Nomor telepon: " + datas.getNomor_telepon());
                 System.out.println();
             });
