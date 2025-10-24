@@ -112,7 +112,7 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                         final String QUERY_INSERT_SQL= "INSERT INTO absensi(ID_Profile, masuk) VALUES(?,?)";
                         try(PreparedStatement statement1 = connection.prepareStatement(QUERY_INSERT_SQL)) {
                             statement1.setInt(1, result.getInt("ID"));
-                            statement1.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+                            statement1.setObject(2, LocalDateTime.now());
 
                             statement1.executeUpdate();
                             return isCheck = true;
@@ -143,7 +143,7 @@ public class ProfileRepositoryImpl implements ProfileRepository {
                         // jika true maka lakukan insertData di table absensi
                         final String QUERY_INSERT_SQL= "UPDATE absensi SET keluar=? WHERE ID_Profile=?";
                         try(PreparedStatement statement1 = connection.prepareStatement(QUERY_INSERT_SQL)) {
-                            statement1.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+                            statement1.setObject(1, LocalDateTime.now());
                             statement1.setInt(2, result.getInt("ID"));
 
                             int rowsEffected = statement1.executeUpdate();
